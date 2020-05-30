@@ -5,7 +5,7 @@ function toggle() {
   switchOn = !switchOn
   
 }
-$: console.log(`on : ${switchOn}` )
+$: console.log(`switch is ${switchOn ? 'on' : 'off'}` )
 </script>
 <div class="shape {switchOn? 'blue' : 'grey'}" on:click={toggle} >
   <div class="switch {switchOn? 'on ': 'off'}" ></div>

@@ -2,9 +2,17 @@
 	export let name;
 	export let age;
 	import Switch from './Switch.svelte'
+	import Greeting from './Greeting.svelte'
 	// import Compo from './Compo.svelte'
+	$: nameUppercase = name.toUpperCase()
+	$: console.log(`name: ${name}`)
+	$: console.log(`age: ${age}`)
+
 	function incrementAge () {
 		age += 1
+	}
+	function changeName () {
+		name = "Valiant Coder"
 	}
 </script>
 
@@ -12,13 +20,14 @@
 	<title>Svelte first app</title>
 </svelte:head>
 
-
 <main>
-	<h1>Hello dude!</h1>
+	<Greeting />
+	
 	<p>Nice to meet you!</p>
-	<p>I'm {name} and {age} years old. (yea i know i dont seem)</p>
+	<p>I'm {nameUppercase} and {age} years old. (yea i know i dont seem)</p>
 	<hr>
 	<button on:click={incrementAge}>increment age</button>
+	<button on:click={changeName}>Change Name</button>
 	<Switch />
 </main>
 
@@ -31,14 +40,7 @@
 		margin: 0 auto;
 	}
 
-	h1 {
-		color: purple;
-		text-transform: uppercase;
-		font-size: 4em;
-		text-shadow: 2px -1px 2px fuchsia;
-		
-		/* font-weight: bold; */
-	}
+	
 	button {
 		border-radius: 8px;
 		font-size: 1.25em;
