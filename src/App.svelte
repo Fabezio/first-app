@@ -8,8 +8,13 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Svelte first app</title>
+</svelte:head>
+
+
 <main>
-	<h1>Hello Dude!</h1>
+	<h1>Hello dude!</h1>
 	<p>Nice to meet you!</p>
 	<p>I'm {name} and {age} years old. (yea i know i dont seem)</p>
 	<hr>
