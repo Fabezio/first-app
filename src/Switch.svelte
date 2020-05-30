@@ -25,7 +25,7 @@ $: console.log(`switch is ${switchOn ? 'on' : 'off'}` )
   background: #cfcfff;
   border-radius: 50%;
   box-shadow: 4px 3px 5px grey;
-  border: .05em inset #333;
+  border: .07em dotted #333;
 }
 .grey {
   background-color: grey;

@@ -1,18 +1,33 @@
 <script>
 	export let name;
 	export let age;
+	let job = ""
+	let email = ""
+	let desc = ""
+	let user = {
+		name,
+		job, 
+		email, 
+		desc
+	}
+	/* 
+	*/
 	import Switch from './Switch.svelte'
 	import Greeting from './Greeting.svelte'
+	import ContactCard from './ContactCard.svelte'
 	// import Compo from './Compo.svelte'
-	$: nameUppercase = name.toUpperCase()
-	$: console.log(`name: ${name}`)
+	$: nameUppercase = user.name.toUpperCase()
 	$: console.log(`age: ${age}`)
+	$: console.log(`name: ${name}`)
+	// $: console.log(`job: ${job}`)
+	$: if (name === 'Valiant Coder') age = 22
+	
 
 	function incrementAge () {
 		age += 1
 	}
 	function changeName () {
-		name = "Valiant Coder"
+		user.name = "Valiant Coder"
 	}
 </script>
 
@@ -27,8 +42,16 @@
 	<p>I'm {nameUppercase} and {age} years old. (yea i know i dont seem)</p>
 	<hr>
 	<button on:click={incrementAge}>increment age</button>
-	<button on:click={changeName}>Change Name</button>
-	<Switch />
+	<button on:click={changeName}>Change Name</button><br>
+	<input type="text" bind:value="{user.name}" placeholder="name: " ><br>
+	<input type="text" bind:value="{user.job}" placeholder="job: " ><br>
+	<input type="email" bind:value="{user.email}" placeholder="email: " ><br>
+	<textarea bind:value="{user.desc}" placeholder="description"></textarea><br>
+	<ContactCard {user}/>
+<!--
+
+<Switch />
+-->	
 </main>
 
 <style>
