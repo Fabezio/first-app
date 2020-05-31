@@ -1,14 +1,15 @@
 <script>
-	export let name;
-	export let age;
-	let job = ""
-	let email = ""
-	let desc = ""
+	// export let name;
+	// export let age;
+	// let name;
+	// let job = ""
+	// let email = ""
+	// let desc = ""
 	let user = {
-		name,
-		job, 
-		email, 
-		desc
+		name: "",
+		job: "", 
+		image: "", 
+		desc: ""
 	}
 	/* 
 	*/
@@ -16,19 +17,21 @@
 	import Greeting from './Greeting.svelte'
 	import ContactCard from './ContactCard.svelte'
 	// import Compo from './Compo.svelte'
-	$: nameUppercase = user.name.toUpperCase()
-	$: console.log(`age: ${age}`)
-	$: console.log(`name: ${name}`)
+	
+	$: console.log(user.hasIndex)
+	// $: nameUppercase = user.name.toUpperCase()
+	// $: console.log(`age: ${age}`)
+	// $: console.log(`name: ${name}`)
 	// $: console.log(`job: ${job}`)
-	$: if (name === 'Valiant Coder') age = 22
+	// $: if (name === 'Valiant Coder') age = 22
 	
 
-	function incrementAge () {
-		age += 1
-	}
-	function changeName () {
-		user.name = "Valiant Coder"
-	}
+	// function incrementAge () {
+	// 	age += 1
+	// }
+	// function changeName () {
+	// 	user.name = "Valiant Coder"
+	// }
 </script>
 
 <svelte:head>
@@ -38,16 +41,24 @@
 <main>
 	<Greeting />
 	
-	<p>Nice to meet you!</p>
-	<p>I'm {nameUppercase} and {age} years old. (yea i know i dont seem)</p>
+	<h2>Nice to meet you!</h2>
+	
+	<!-- <p>I'm {nameUppercase} and {age} years old. (yea i know i dont seem)</p> -->
 	<hr>
-	<button on:click={incrementAge}>increment age</button>
-	<button on:click={changeName}>Change Name</button><br>
-	<input type="text" bind:value="{user.name}" placeholder="name: " ><br>
-	<input type="text" bind:value="{user.job}" placeholder="job: " ><br>
-	<input type="email" bind:value="{user.email}" placeholder="email: " ><br>
-	<textarea bind:value="{user.desc}" placeholder="description"></textarea><br>
-	<ContactCard {user}/>
+	<!-- <button on:click={incrementAge}>increment age</button>
+	<button on:click={changeName}>Change Name</button><br> -->
+
+	<!-- {#if user.length != 4} -->
+		<input type="text" bind:value="{user.name}" placeholder="name: " ><br>
+		<input type="text" bind:value="{user.job}" placeholder="job: " ><br>
+		<input type="text" bind:value="{user.image}" placeholder="image path: " ><br>
+		<!-- <input type="email" bind:value="{user.email}" placeholder="email: " ><br> -->
+		<textarea bind:value="{user.desc}" placeholder="description"></textarea><br>
+		<!-- <input type="submit" value="send"> -->
+	<!-- {:else} -->
+		<ContactCard {user}/>
+	<!-- {/if} -->
+
 <!--
 
 <Switch />
@@ -62,7 +73,6 @@
 		max-width: 240px;
 		margin: 0 auto;
 	}
-
 	
 	button {
 		border-radius: 8px;

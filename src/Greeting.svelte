@@ -2,15 +2,24 @@
 let hours = new Date().getHours()
 let minutes = new Date().getMinutes()
 let greet = ''
-$: {
-  if (hours < 12) greet = 'good morning'
-  else if (hours < 17) greet = 'good afternoon'
-  else greet = 'good evening'
+function twoDigit (val) {
+	val.length < 2 
+		? val= `0${val}` 
+		: val = val
 }
+
+$: {
+  if (hours < 12) greet = 'morning'
+  else if (hours < 17) greet = 'afternoon'
+  else greet = 'evening'
+}
+$: twoDigit(hours)
+$: twoDigit(minutes)
+// $: if (minutes.length != 2) minutes = `0${minutes}`
 </script>
 
 <p id="clock">{hours}:{minutes}</p>
-<h1>{greet} dude!</h1>
+<h1>Good {greet} dude!</h1>
 <style>
 #clock {
   float: right;
