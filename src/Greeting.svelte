@@ -15,7 +15,6 @@ $: {
 }
 $: twoDigit(hours)
 $: twoDigit(minutes)
-// $: if (minutes.length != 2) minutes = `0${minutes}`
 </script>
 
 <p id="clock">{hours}:{minutes}</p>
@@ -26,11 +25,9 @@ $: twoDigit(minutes)
 }
 
 h1 {
-		color: purple;
-		text-transform: uppercase;
-		font-size: 4em;
-		text-shadow: 2px -1px 2px fuchsia;
-		
-		/* font-weight: bold; */
-	}
+	color: purple;
+	text-transform: uppercase;
+	font-size: 4em;
+	text-shadow: 2px -1px 2px fuchsia;
+}
 </style>

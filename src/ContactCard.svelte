@@ -14,25 +14,18 @@ export let user
     </div>
     <div class="col">
       <p id="name">
-        <!-- <span class="line-title">name: </span> -->
-        <span class={user.name? 'line-text' : 'text-muted'}>{user.name || 'name'}</span></p>
-        <!-- <span class='text-muted' class:line-text={user.name}>{user.name || 'name'}</span></p> -->
+        <span class={user.name? 'line-text' : 'text-muted'}>{user.name || 'name'}</span>
+      </p>
+        
       <p id="job">
-        <!-- <span class="line-title">job: </span> -->
         <span class={user.job? 'line-text' : 'text-muted'}>{user.job || 'job'}</span>
       </p>
     </div>
   </div>
   <hr>
   <p id="desc">
-    <!-- <span class="line-title">description: </span><br> -->
-    <!-- <span class="line-text desc-content">{user.desc}</span> -->
     <span class={user.desc? 'line-text' : 'text-muted'}>{@html user.desc || 'description'}</span>
   </p>
-  <!-- <p id="contact">
-    <span class="line-title">contact: </span>
-    <span class="line-text">{user.email || 'email'}</span>
-  </p> -->
 
 </div>
 
@@ -68,8 +61,7 @@ img {
 }
 #name, 
 #job, 
-#desc, 
-#contact {
+#desc {
   color: black;
   text-align: left;
 }
@@ -98,17 +90,5 @@ img {
   padding: 0.25em 0.75em 0.25em 0.25em;
   border-radius: 3px;
 }
-/*
-.job {
-  color: black;
-  text-align: left;
-}
-
-.desc {
-  color: black;
-  text-align: left;
-}
-*/
-  
 
 </style>

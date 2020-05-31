@@ -14,14 +14,12 @@ $: console.log(`switch is ${switchOn ? 'on' : 'off'}` )
 .shape {
   width: 2em;
   height: 1em;
-  /* background: #c000ff; */
   border-radius: .5em;
   border: -1px inset #333;
 }
 .switch {
   width: 0.9em;
   height: .9em;
-  /* float: left; */
   background: #cfcfff;
   border-radius: 50%;
   box-shadow: 4px 3px 5px grey;
