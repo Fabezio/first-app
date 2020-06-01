@@ -1,5 +1,8 @@
 <script>
-export let user
+export let name
+export let job
+export let desc
+export let image
 </script>
 
 <div class="card">
@@ -7,24 +10,24 @@ export let user
   <div class="row" >
     <div class="col">
       <figure>
-        <div class={user.image ? '' : 'frame'}>
-          <img src={user.image} alt= {user.name}>
+        <div class={image ? '' : 'frame'}>
+          <img src={image} alt= {name}>
         </div>
       </figure>
     </div>
     <div class="col">
       <p id="name">
-        <span class={user.name? 'line-text' : 'text-muted'}>{user.name || 'name'}</span>
+        <span class={name? 'line-text' : 'text-muted'}>{name || 'name'}</span>
       </p>
         
       <p id="job">
-        <span class={user.job? 'line-text' : 'text-muted'}>{user.job || 'job'}</span>
+        <span class={job? 'line-text' : 'text-muted'}>{job || 'job'}</span>
       </p>
     </div>
   </div>
   <hr>
   <p id="desc">
-    <span class={user.desc? 'line-text' : 'text-muted'}>{@html user.desc || 'description'}</span>
+    <span class={desc? 'line-text' : 'text-muted'}>{@html desc || 'description'}</span>
   </p>
 
 </div>

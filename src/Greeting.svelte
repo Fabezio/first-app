@@ -1,11 +1,22 @@
 <script>
-let hours = new Date().getHours()
-let minutes = new Date().getMinutes()
+let current = new Date
+let hours = current.getHours()
+let minutes = current.getMinutes()
+let seconds = current.getSeconds()
+
+function displayCurrentTime() {
+
+	let currentTime = [hours, minutes, seconds]
+	return currentTime.join(':')
+}
+setTimeout(() => displayCurrentTime(), 1000)
+
 let greet = ''
-function twoDigit (value) {
-	if(value.length == 1) {
-		value = `0${value}`
+function twoDigit(value) {
+	if(value < 10) {
+		value = '0' + value
 		}
+	return value
 }
 
 $: {
@@ -18,7 +29,7 @@ $: twoDigit(minutes)
 // $: if(minutes.length == 1) minutes= `0${minutes}` 
 </script>
 
-<p id="clock">{hours}:{minutes}</p>
+<!-- <p id="clock">{displayCurrentTime()}</p> -->
 <h1>Good {greet} dude!</h1>
 <style>
 #clock {
