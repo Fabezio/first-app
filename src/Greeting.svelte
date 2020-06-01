@@ -2,10 +2,10 @@
 let hours = new Date().getHours()
 let minutes = new Date().getMinutes()
 let greet = ''
-function twoDigit (val) {
-	val.length < 2 
-		? val= `0${val}` 
-		: val = val
+function twoDigit (value) {
+	if(value.length == 1) {
+		value = `0${value}`
+		}
 }
 
 $: {
@@ -15,6 +15,7 @@ $: {
 }
 $: twoDigit(hours)
 $: twoDigit(minutes)
+// $: if(minutes.length == 1) minutes= `0${minutes}` 
 </script>
 
 <p id="clock">{hours}:{minutes}</p>

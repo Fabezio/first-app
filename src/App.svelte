@@ -5,13 +5,21 @@
 		image: "", 
 		desc: ""
 	}
+	let done = false
 	/* 
 	*/
 	import Switch from './Switch.svelte'
 	import Greeting from './Greeting.svelte'
 	import ContactCard from './ContactCard.svelte'
+
+	function addContact() {
+		done = true
+
+	}
 	
-	$: console.log(user.hasIndex)
+	// $: console.log(user.hasIndex)
+	$: console.log(done)
+
 </script>
 
 <svelte:head>
@@ -28,6 +36,10 @@
 		<input type="text" bind:value="{user.job}" placeholder="job: " ><br>
 		<input type="text" bind:value="{user.image}" placeholder="image path: " ><br>
 		<textarea bind:value="{user.desc}" placeholder="description"></textarea><br>
+		<button on:click={addContact}>
+			Add Contact
+			<!-- <input type="submit" value="Add Contact" > -->
+		</button>
 		<ContactCard {user}/>
 <!--
 <Switch />
