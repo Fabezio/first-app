@@ -21,7 +21,5 @@
 <p id="clock">{formatter.format(date)}</p>
 
 <style>
-#clock {
-  float: right;
-}
+#clock {float: right;}
 </style>

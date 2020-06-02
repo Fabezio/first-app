@@ -11,39 +11,35 @@ export let image
     <div class="col">
       <figure>
         <div class={image ? '' : 'frame'}>
-          <img src={image} alt= {name}>
+          <img src={image} alt={name}>
         </div>
       </figure>
     </div>
     <div class="col">
       <p id="name">
-        <span class={name? 'line-text' : 'text-muted'}>{name || 'name'}</span>
+        <span class={name? 'line-text' : 'text-muted'}>{name}</span>
       </p>
         
       <p id="job">
-        <span class={job? 'line-text' : 'text-muted'}>{job || 'job'}</span>
+        <span class={job? 'line-text' : 'text-muted'}>{job}</span>
       </p>
     </div>
   </div>
   <hr>
   <p id="desc">
-    <span class={desc? 'line-text' : 'text-muted'}>{@html desc || 'description'}</span>
+    <span class={desc? 'line-text' : 'text-muted'}>{@html desc}</span>
   </p>
 
 </div>
 
 <style>
-.row {
-  display: flex;
-}
-.col {
-  display: block;
-}
+.row {display: flex;}
+.col {display: block;}
+
 .frame {
   border-radius: 1em;
   border: solid 1px rgba(0,0,0, .1);
   background: grey;
-
 }
 img {
   width: 100px;
@@ -59,9 +55,7 @@ img {
   margin: 2.5em auto;
   padding: 0.5em 1em;
 }
-.card:hover {
-  transform: translate(0, 2px);
-}
+.card:hover {transform: translate(0, 2px);}
 #name, 
 #job, 
 #desc {
@@ -69,21 +63,17 @@ img {
   text-align: left;
 }
   
-#desc-content {
+/* #desc-content {
   padding-left: 1.5em;
   text-align: justify;
   font-size: 0.9em;
-}
-#contact {
+} */
+/* #contact {
   text-decoration: underline;
   font-style: oblique;
-}
-.line-title {
-  font-weight: 400;
-}
-.line-text {
-  font-weight: 300;
-}
+} */
+/* .line-title {font-weight: 400;} */
+.line-text {font-weight: 300;}
 
 .text-muted {
   color: rgba(0,0,0,.75);

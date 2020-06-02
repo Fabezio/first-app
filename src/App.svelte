@@ -1,23 +1,22 @@
 <script>
+	// Components: 
+	import Switch from './Switch.svelte'
+	import Clock from './Clock.svelte'
+	import Greeting from './Greeting.svelte'
+	import ContactCard from './ContactCard.svelte'
+
+	// Variables
+	let createdContacts = []
 	let name = ""
 	let job = ""
 	let image = ""
 	let desc = ""
 	let id
 	let primaryKey= 0
-	
-	// const {name, job, image, desc} = user
 	let done = false
 	let formState = 'empty'
-	let createdContacts = []
-	$: console.log("card # " + primaryKey)
-	/* 
-	*/
-	import Switch from './Switch.svelte'
-	import Clock from './Clock.svelte'
-	import Greeting from './Greeting.svelte'
-	import ContactCard from './ContactCard.svelte'
-
+	
+	// Functions
 	function addContact() {
 		if (
 			name.trim().length == 0 || 
@@ -38,8 +37,6 @@
 			desc 
 		}]
 		formState = 'done'
-
-	
 	}
 	function removeFirstContact() {
 		if (createdContacts.length) {
@@ -51,14 +48,17 @@
 	}
 	function removeLastContact() {
 		if (createdContacts.length) {
-		// alert("remove this contact?")
+			// alert("remove this contact?")
 			createdContacts = createdContacts.slice(0, -1)
 		} else {
 			alert('no contact card')
 		}
 
 	}
+
+	// Reactivity
 	// $: console.log(user.hasIndex)
+	$: console.log("card # " + primaryKey)
 	$: console.log(formState)
 
 </script>
@@ -90,7 +90,7 @@
 		
 		
 		{#if formState == 'invalid'}
-		<p class="error">Invalid</p>
+		<p class="error">Invalid, you must complete the form.</p>
 		{:else}
 		<p class="warning">Please enter data and click the button</p>
 		{/if}
@@ -134,14 +134,13 @@
 		padding: .5em 1.5em;
 		font-weight: 200;
 	}
-	.error {color: red;}
-	.warning {color: orangered;}
 
+	/* colors  */
+	.error {color: red;}
+	.warning {color: orange;}
 	.bg-success {background-color: green;	}
 	.bg-warning {background-color: orange;}
-	.bg-danger {background-color: red;}
-
-	
+	.bg-danger {background-color: red;}	
 
 	@media (min-width: 640px) {
 		main {
