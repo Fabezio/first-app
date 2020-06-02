@@ -3,11 +3,14 @@
 	let job = ""
 	let image = ""
 	let desc = ""
+	let id
+	let primaryKey= 0
 	
 	// const {name, job, image, desc} = user
 	let done = false
 	let formState = 'empty'
 	let createdContacts = []
+	$: console.log("card # " + primaryKey)
 	/* 
 	*/
 	import Switch from './Switch.svelte'
@@ -25,7 +28,10 @@
 			formState = 'invalid'
 			return
 		} 
+		primaryKey += 1
+		console.log(createdContacts.lastIndexOf())
 		createdContacts = [...createdContacts, {
+			id: primaryKey,
 			name,
 			job,
 			image,
@@ -35,29 +41,51 @@
 
 	
 	}
+	function removeFirstContact() {
+		if (createdContacts.length) {
+			// alert("remove this contact?")
+			createdContacts = createdContacts.slice(1)
+		} else {
+			alert('no contact card')
+		}
+	}
+	function removeLastContact() {
+		if (createdContacts.length) {
+		// alert("remove this contact?")
+			createdContacts = createdContacts.slice(0, -1)
+		} else {
+			alert('no contact card')
+		}
+
+	}
 	// $: console.log(user.hasIndex)
 	$: console.log(formState)
 
 </script>
 
 <svelte:head>
-	<title>Svelte first app</title>
+	<title>Svelte Contact Cards</title>
 </svelte:head>
 
 <main>
 	<!-- <Clock /> -->
 	<Greeting />
 	
-	<h2>Nice to meet you!</h2>
+	<h2>Leave a <span class="error">contact card</span>!</h2>
 	
 	<hr>
 		<input type="text" bind:value="{name}" placeholder="name: " ><br>
 		<input type="text" bind:value="{job}" placeholder="job: " ><br>
 		<input type="text" bind:value="{image}" placeholder="image path: " ><br>
 		<textarea bind:value="{desc}" placeholder="description"></textarea><br>
-		<button on:click={addContact}>
-			Add contact
-			<!-- <input type="submit" value="Add Contact" > -->
+		<button class="bg-success" on:click={addContact}>
+			Add Contact
+		</button>
+		<button class="bg-danger" on:click={removeFirstContact}>
+			Remove First Contact
+		</button>
+		<button class="bg-warning" on:click={removeLastContact}>
+			Remove Last Contact
 		</button>
 		
 		
@@ -67,18 +95,20 @@
 		<p class="warning">Please enter data and click the button</p>
 		{/if}
 
-		{#each createdContacts as contact, i}
-		{#if createdContacts.length > 1}	
-			<h2>#{i + 1}</h2>
+		{#if createdContacts.length}
+			{#each createdContacts as contact, i}
+				{#if createdContacts.length > 1 || primaryKey > 1}	
+					<h2>#{ contact.id}</h2>
+				{/if}
+			<ContactCard 
+			name={contact.name} 
+			job={contact.job} 
+			image={contact.image} 
+			desc={contact.desc}/>
+			{:else}
+			<p class="warning">You have to fill the form if you wanna display your card.</p>
+			{/each}
 		{/if}
-		<ContactCard 
-		name={contact.name} 
-		job={contact.job} 
-		image={contact.image} 
-		desc={contact.desc}/>
-		{:else}
-		<p class="warning">You have to fill the form if you wanna display your card.</p>
-		{/each}
 <!--
 <Switch />
 -->	
@@ -98,18 +128,18 @@
 		border-radius: 8px;
 		font-size: 1.25em;
 		color: white;
-		background-color: hsl(0, 85%, 50%);
+		/* background-color: hsl(0, 85%, 50%); */
 		border: none;
 		text-transform: uppercase;
 		padding: .5em 1.5em;
 		font-weight: 200;
 	}
-	.error {
-		color: red;
-	}
-	.warning {
-		color: orangered;
-	}
+	.error {color: red;}
+	.warning {color: orangered;}
+
+	.bg-success {background-color: green;	}
+	.bg-warning {background-color: orange;}
+	.bg-danger {background-color: red;}
 
 	
 
