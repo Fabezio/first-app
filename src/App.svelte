@@ -38,24 +38,7 @@
 		}]
 		formState = 'done'
 	}
-	function removeFirstContact() {
-		if (createdContacts.length) {
-			// alert("remove this contact?")
-			createdContacts = createdContacts.slice(1)
-		} else {
-			alert('no contact card')
-		}
-	}
-	function removeLastContact() {
-		if (createdContacts.length) {
-			// alert("remove this contact?")
-			createdContacts = createdContacts.slice(0, -1)
-		} else {
-			alert('no contact card')
-		}
-
-	}
-
+	
 	// Reactivity
 	// $: console.log(user.hasIndex)
 	$: console.log("card # " + primaryKey)
@@ -75,14 +58,16 @@
 	<h2>Leave a <span class="error">contact card</span>!</h2>
 	
 	<hr>
+	<form>
 	<input type="text" bind:value="{name}" placeholder="name: " ><br>
 	<input type="text" bind:value="{job}" placeholder="job: " ><br>
 	<input type="text" bind:value="{image}" placeholder="image path: " ><br>
 	<textarea bind:value="{desc}" placeholder="description"></textarea><br>
 	<br>
-	<button class="bg-success" on:click|preventDefault={addContact}>
+	<button class="bg-success" type="submit" on:click|preventDefault={addContact}>
 		Add Contact
 	</button>
+	</form>
 	<button class="bg-danger" on:click={event => createdContacts = createdContacts.slice(1)}>
 		Remove First Contact
 	</button>
