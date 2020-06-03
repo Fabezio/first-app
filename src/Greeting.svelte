@@ -1,10 +1,14 @@
 <script>
+	// Modules: 
+	// import {time, readable} from 'svelte/store'
+	
 	// Variables:
 	let current = new Date
 	let hours = current.getHours()
 	let minutes = current.getMinutes()
 	let seconds = current.getSeconds()
 	let greet = ''
+	// $: console.log(time)
 
 	// Functions :
 	function displayCurrentTime() {

@@ -52,7 +52,7 @@ img {
   border: 2px ridge #777;
   border-radius: 3px;
   box-shadow: 10px 10px 10px #777;
-  margin: 2.5em auto;
+  margin: 1em auto 2.5em;
   padding: 0.5em 1em;
 }
 .card:hover {transform: translate(0, 2px);}

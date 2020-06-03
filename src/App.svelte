@@ -12,7 +12,7 @@
 	let image = ""
 	let desc = ""
 	let id
-	let primaryKey= 0
+	let primaryKey
 	let done = false
 	let formState = 'empty'
 	
@@ -60,6 +60,7 @@
 	// $: console.log(user.hasIndex)
 	$: console.log("card # " + primaryKey)
 	$: console.log(formState)
+	$: if(!createdContacts.length) primaryKey = 0
 
 </script>
 
@@ -74,41 +75,42 @@
 	<h2>Leave a <span class="error">contact card</span>!</h2>
 	
 	<hr>
-		<input type="text" bind:value="{name}" placeholder="name: " ><br>
-		<input type="text" bind:value="{job}" placeholder="job: " ><br>
-		<input type="text" bind:value="{image}" placeholder="image path: " ><br>
-		<textarea bind:value="{desc}" placeholder="description"></textarea><br>
-		<button class="bg-success" on:click={addContact}>
-			Add Contact
-		</button>
-		<button class="bg-danger" on:click={removeFirstContact}>
-			Remove First Contact
-		</button>
-		<button class="bg-warning" on:click={removeLastContact}>
-			Remove Last Contact
-		</button>
-		
-		
-		{#if formState == 'invalid'}
-		<p class="error">Invalid, you must complete the form.</p>
-		{:else}
-		<p class="warning">Please enter data and click the button</p>
-		{/if}
+	<input type="text" bind:value="{name}" placeholder="name: " ><br>
+	<input type="text" bind:value="{job}" placeholder="job: " ><br>
+	<input type="text" bind:value="{image}" placeholder="image path: " ><br>
+	<textarea bind:value="{desc}" placeholder="description"></textarea><br>
+	<br>
+	<button class="bg-success" on:click|preventDefault={addContact}>
+		Add Contact
+	</button>
+	<button class="bg-danger" on:click={event => createdContacts = createdContacts.slice(1)}>
+		Remove First Contact
+	</button>
+	<button class="bg-warning" on:click={event => createdContacts = createdContacts.slice(0, -1)}>
+		Remove Last Contact
+	</button>
+	
+	
+	{#if formState == 'invalid'}
+	<p class="error">Invalid, you must complete the form.</p>
+	{:else}
+	<p class="warning">Please enter data and click the button</p>
+	{/if}
 
-		{#if createdContacts.length}
-			{#each createdContacts as contact, i}
-				{#if createdContacts.length > 1 || primaryKey > 1}	
-					<h2>#{ contact.id}</h2>
-				{/if}
-			<ContactCard 
-			name={contact.name} 
-			job={contact.job} 
-			image={contact.image} 
-			desc={contact.desc}/>
-			{:else}
-			<p class="warning">You have to fill the form if you wanna display your card.</p>
-			{/each}
-		{/if}
+	{#if createdContacts.length}
+		{#each createdContacts as contact, i}
+			{#if createdContacts.length > 1 || primaryKey > 1}	
+				<h2 class="mb-0">#{ contact.id}</h2>
+			{/if}
+		<ContactCard 
+		name={contact.name} 
+		job={contact.job} 
+		image={contact.image} 
+		desc={contact.desc}/>
+		{:else}
+		<p class="warning">You have to fill the form if you wanna display your card.</p>
+		{/each}
+	{/if}
 <!--
 <Switch />
 -->	
@@ -141,6 +143,14 @@
 	.bg-success {background-color: green;	}
 	.bg-warning {background-color: orange;}
 	.bg-danger {background-color: red;}	
+
+	/* gaps */
+	.mb-0 {
+		margin-bottom: 0;
+	}
+	.mb-1 {
+		margin-bottom: 1em;
+	}
 
 	@media (min-width: 640px) {
 		main {
